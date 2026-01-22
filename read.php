@@ -2,9 +2,12 @@
 
 require_once 'conection.php';
 
-$sql = 'SELECT * FROM usuarios';        // 'selecionando tudo' da tabela usuarios
+$id = 2;        // valor do id que será usado como 'filtro na consulta'
+
+$sql = 'SELECT * FROM usuarios WHERE id = :id';        // 'selecionando tudo' da tabela usuarios
 
 $stmt = $pdo-> prepare($sql);       // execução da query que retornará os usuarios
+$stmt-> bindParam(':id', $id);       // associa o valor da variável $id ao placeholder :id
 $result = $stmt-> execute();       // execução da query que retornará os usuarios
 
 if($result) {
