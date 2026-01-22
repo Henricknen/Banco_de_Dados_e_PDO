@@ -1,8 +1,13 @@
 <?php
 
-require_once 'env.php';
+$host = 'localhost';
 
-$dsn = "mysql:host=$ENV_HOST;dbname=$ENV_DBNAME";      // string de conexão com banco de dados
+$username = 'root';
+$password = '';
+$dbname = '';
+$dsn = "mysql:host=$host;dbname=$dbname";      // string de conexão com banco de dados
+
+$connection = new PDO($dsn, $username, $password);
 
 try {       // captura os erros de conexão
     $pdo = new PDO($dsn, $ENV_USERNAME, $ENV_PASSWORD);      // fazendo conexão
